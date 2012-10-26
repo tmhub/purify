@@ -7,6 +7,11 @@ class TM_Purify_Helper_Data extends Mage_Core_Helper_Abstract
     {
         if (!$this->_purifier instanceof HTMLPurifier) {
             $config = HTMLPurifier_Config::createDefault();
+            $config->set(
+                'HTML',
+                'AllowedAttributes',
+                array('a.href', 'img.src', 'img.alt')
+            );
             $this->_purifier = new HTMLPurifier($config);
         }
         return $this->_purifier;
