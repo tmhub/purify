@@ -11,7 +11,7 @@ class TM_Purify_Helper_Data extends Mage_Core_Helper_Abstract implements Zend_Fi
     {
         if (!$this->_purifier instanceof HTMLPurifier) {
             require_once 'HTMLPurifier/HTMLPurifier.includes.php';
-            require_once 'HTMLPurifier/HTMLPurifier.autoload.php';
+//            require_once 'HTMLPurifier/HTMLPurifier.auto.php';
 //            $options = array(
 //                // Allow only paragraph tags
 //                // and anchor tags wit the href attribute
