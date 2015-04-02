@@ -20,13 +20,5 @@
         "type": "composer",
         "url": "http://tmhub.github.io/packages/"
         }
-    ],
-    "extra": {
-        "map": [
-            ["app/code/community/TM/Purify", "app/code/community/TM/Purify"],
-            ["app/etc/modules/TM_Purify.xml", "app/etc/modules/TM_Purify.xml"],
-            ["lib/HTMLPurifier", "lib/HTMLPurifier"]
-        ],
-        "changelog": ""
-    }
+    ]
 }
