@@ -12,7 +12,9 @@ class TM_Purify_Helper_Data extends Mage_Core_Helper_Abstract implements Zend_Fi
         if (!$this->_purifier instanceof HTMLPurifier) {
             require_once 'HTMLPurifier/HTMLPurifier.includes.php';
 //            require_once 'HTMLPurifier/HTMLPurifier.auto.php';
-//            $options = array(
+            $options = array(
+                array('AutoFormat.AutoParagraph', true),
+                array('AutoFormat.RemoveEmpty', true)
 //                // Allow only paragraph tags
 //                // and anchor tags wit the href attribute
 //                array('HTML.Allowed','p,a[href]'),
@@ -22,12 +24,12 @@ class TM_Purify_Helper_Data extends Mage_Core_Helper_Abstract implements Zend_Fi
 //                array('HTML.Doctype', 'XHTML 1.0 Strict'),
 //                // Disable cache, but see note after the example
 //                array('Cache.DefinitionImpl', null)
-//            );
+            );
             // Configuring HTMLPurifier
             $config = HTMLPurifier_Config::createDefault();
-//            foreach ($options as $option) {
-//                $config->set($option[0], $option[1]);
-//            }
+            foreach ($options as $option) {
+                $config->set($option[0], $option[1]);
+            }
             $this->_purifier = new HTMLPurifier($config);
         }
         return $this->_purifier;
@@ -40,6 +42,7 @@ class TM_Purify_Helper_Data extends Mage_Core_Helper_Abstract implements Zend_Fi
      */
     public function purify($html)
     {
+        $html = str_replace("\r\n", "\n\n", $html);
         return $this->_getHTMLPurifierInstance()
             ->purify($html);
     }
