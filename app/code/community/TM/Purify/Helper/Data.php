@@ -43,6 +43,9 @@ class TM_Purify_Helper_Data extends Mage_Core_Helper_Abstract implements Zend_Fi
     public function purify($html)
     {
         $html = str_replace("\r\n", "\n\n", $html);
+        if (!class_exists('HTMLPurifier')) {
+            return $html;
+        }
         return $this->_getHTMLPurifierInstance()
             ->purify($html);
     }
