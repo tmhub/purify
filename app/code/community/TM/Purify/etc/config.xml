@@ -2,7 +2,7 @@
 <config>
     <modules>
         <TM_Purify>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </TM_Purify>
     </modules>
     <global>

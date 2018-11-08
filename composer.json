@@ -4,7 +4,7 @@
     "homepage": "https://github.com/tmhub/purify",
     "license": "OSL-3.0",
     "description": "Templates Master Purify module(HTMLPurifier magento integrator)",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "authors": [
         {
         "name": "Template Masters Team",
