@@ -10,7 +10,9 @@ class TM_Purify_Helper_Data extends Mage_Core_Helper_Abstract implements Zend_Fi
     protected function _getHTMLPurifierInstance()
     {
         if (!$this->_purifier instanceof HTMLPurifier) {
-            require_once 'HTMLPurifier/HTMLPurifier.includes.php';
+            if (!@class_exists('HTMLPurifier')) {
+                require_once 'HTMLPurifier/HTMLPurifier.includes.php';
+            }
 //            require_once 'HTMLPurifier/HTMLPurifier.auto.php';
             $options = array(
                 array('AutoFormat.AutoParagraph', true),
@@ -43,9 +45,7 @@ class TM_Purify_Helper_Data extends Mage_Core_Helper_Abstract implements Zend_Fi
     public function purify($html)
     {
         $html = str_replace("\r\n", "\n\n", $html);
-        if (!class_exists('HTMLPurifier')) {
-            return $html;
-        }
+
         return $this->_getHTMLPurifierInstance()
             ->purify($html);
     }
